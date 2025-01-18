@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <style>
+            .container{
+                width: 50%;
+                margin: auto;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background-color: gainsboro;
+            }
+            .content{
+                background-color: rgb(219, 227, 231);
+                width: 90%;
+                height: 150px;
+                margin: 5% 5%;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                background-color: #f8f8f8;
+                font-size: 16px;
+                resize: none;
+                
+            }
+            .title{
+                margin-left: 5%;
+                padding: 12px 20px;
+                width: 85%;
+            }
+            .button {
+                background-color: #04AA6D; /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin-bottom: 5%;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/blog" method="post">
+            <div class="container">
+                <input class="title" name="title" type="text" placeholder="title" style="display: block;">
+                <textarea class="content" name="post" id="" placeholder="Write here..."></textarea>
+                <button class="button" type="submit">Post</button>
+            </div>
+        </form>
+       
+    </body>
+</html>
