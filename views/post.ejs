@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <style>
+            .container{
+                width: 50%;
+                margin: auto;
+                justify-content: center;
+                align-items: center;
+                background-color: gainsboro;
+            }
+            .content{
+                padding: 20px;
+            }
+            .title{
+                margin-left: 20px;
+            }
+
+    
+
+        </style>
+    </head>
+    <body>
+            <% data.forEach((item) => { %>
+            <div class="container">
+                <h3 class="title">
+                    <%= item.title %>
+                </h3>
+               <p class="content">
+                <%= item.post %>
+               </p>
+            </div>
+            <% }) %>
+    </body>
+</html>
