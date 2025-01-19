@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app  = express();
 const ejs = require('ejs')
+
+const db = require('./db')
 const port = 5000;
 
 app.set('view engine', 'ejs');
@@ -12,22 +14,29 @@ let posts = [];
 function homePage(req, res){
     res.sendFile(__dirname + '/home.html')
 }
-
-function postBlog(req, res){
+function userPage(req, res){
+    res.sendFile(__dirname+ '/user.html')
+}
+async function postBlog(req, res){
     const post = {
         title: req.body.title,
-        post: req.body.post
+        content: req.body.content
         }
-    posts.push(post);
+
+    let postInsertQuery = "INSERT INTO post (Title, Content) VALUES (?,?)"
+    const [result] = await db.execute(postInsertQuery, [post.title, post.content])
     res.redirect("/");
 }
 
-function getPosts(req, res){
-    res.render( 'post', {data: posts})
+async function getPosts(req, res){
+    const [dbPosts] =await db.execute(" SELECT * FROM post")
+    res.render( 'post', {data: dbPosts})
 }
 app.get('/', getPosts)
 app.get('/blog', homePage)
 app.post('/blog', postBlog)
+
+app.get('/user', userPage)
 
 app.listen(port,() => {
     console.log(`Server is running on ${port}...`)
