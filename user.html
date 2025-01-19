@@ -11,11 +11,11 @@
                 text-align: center;
                 background-color: gainsboro;
             }
-            .email{
+            .input{
                 background-color: rgb(219, 227, 231);
                 width: 90%;
-                height: 150px;
-                margin: 5% 5%;
+                height: 50px;
+                margin: 2% 5%;
                 padding: 12px 20px;
                 box-sizing: border-box;
                 border: 2px solid #ccc;
@@ -24,11 +24,6 @@
                 font-size: 16px;
                 resize: none;
                 
-            }
-            .name{
-                margin-left: 5%;
-                padding: 12px 20px;
-                width: 85%;
             }
             .button {
                 background-color: #04AA6D; /* Green */
@@ -45,10 +40,10 @@
     <body>
         <form action="/user" method="post">
             <div class="container">
-                <input class="name" name="name" type="text" placeholder="Name" style="display: block;">
-                <input class="email" name="email" type="email"  placeholder="abcd@xyz.com">
-                <input class="name" name="country" type="text" placeholder="Country" style="display: block;">
-                <button class="button" type="submit">Post</button>
+                <input class="input" name="name" type="text" placeholder="Name" >
+                <input class="input" name="email" type="email"  placeholder="abcd@xyz.com">
+                <input class="input" name="country" type="text" placeholder="Country">
+                <button class="button" type="submit">Add Usesr</button>
             </div>
         </form>
        

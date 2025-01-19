@@ -14,9 +14,7 @@ let posts = [];
 function homePage(req, res){
     res.sendFile(__dirname + '/home.html')
 }
-function userPage(req, res){
-    res.sendFile(__dirname+ '/user.html')
-}
+
 async function postBlog(req, res){
     const post = {
         title: req.body.title,
@@ -32,11 +30,29 @@ async function getPosts(req, res){
     const [dbPosts] =await db.execute(" SELECT * FROM post")
     res.render( 'post', {data: dbPosts})
 }
+
+function userPage(req, res){
+    res.sendFile(__dirname+ '/user.html')
+}
+
+async function addUser(req, res){
+    const user = {
+        name: req.body.name,
+        email: req.body.email,
+        country: req.body.country,
+        }
+
+    let userInsertQuery = "INSERT INTO user (name, email, country) VALUES (?,?, ?)"
+    const [result] = await db.execute(userInsertQuery, [user.name, user.email, user.country])
+    res.redirect("/users");
+}
+
 app.get('/', getPosts)
 app.get('/blog', homePage)
 app.post('/blog', postBlog)
 
 app.get('/user', userPage)
+app.post('/user', addUser)
 
 app.listen(port,() => {
     console.log(`Server is running on ${port}...`)
